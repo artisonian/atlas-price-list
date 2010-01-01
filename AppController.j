@@ -31,7 +31,7 @@
     // It's a useful hook for setting up current UI values, and other things.
     
     // [priceList setBackgroundColors:[CPColor colorWithRed:0.47 green:0.42 blue:0.4 alpha:1.0]];
-    [priceList setMinItemSize:CGSizeMake(420.0, 30.0)];
+    [priceList setMinItemSize:CGSizeMake(405.0, 30.0)];
     [priceList setMaxItemSize:CGSizeMake(2000.0, 30.0)];
     [priceList setMaxNumberOfColumns:1];
     [priceList setVerticalMargin:0.0];
