@@ -8,6 +8,7 @@
 
 @import <Foundation/CPObject.j>
 @import "PriceListItemView.j"
+@import "PriceListItem.j"
 
 @implementation AppController : CPObject
 {
@@ -37,7 +38,11 @@
 
 - (void)loadTestData
 {
-    [priceList setContent:[1,2,3]];
+    var priceItems = [CPArray arrayWithObjects:
+            [[PriceListItem alloc] initWithName:@"Deluxe cookies" price:399],
+            [[PriceListItem alloc] initWithName:@"Yummy cheesecake" price:1299],
+            [[PriceListItem alloc] initWithName:@"Tasty brownies" price:799]];
+    [priceList setContent:priceItems];
 }
 
 @end
