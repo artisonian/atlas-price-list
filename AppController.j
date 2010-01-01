@@ -17,6 +17,7 @@
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     // This is called when the application is done loading.
+    [[theWindow contentView] setBackgroundColor:[CPColor colorWithWhite:0.8 alpha:1.0]];
 }
 
 - (void)awakeFromCib
