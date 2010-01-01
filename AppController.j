@@ -19,6 +19,8 @@
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
 {
     // This is called when the application is done loading.
+    CPLogRegister(CPLogConsole);
+
     [[theWindow contentView] setBackgroundColor:[CPColor colorWithWhite:0.8 alpha:1.0]];
 }
 
@@ -43,6 +45,7 @@
             [[PriceListItem alloc] initWithName:@"Yummy cheesecake" price:1299],
             [[PriceListItem alloc] initWithName:@"Tasty brownies" price:799]];
     [priceList setContent:priceItems];
+    //console.log([CPString stringWithFormat:@"price list content: %@", [priceList content]]);
 }
 
 @end
