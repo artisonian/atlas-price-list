@@ -40,6 +40,7 @@
 
 - (void)loadTestData
 {
+    // Prices are specified in integers (penny amounts)
     var priceItems = [CPArray arrayWithObjects:
             [[PriceListItem alloc] initWithName:@"Deluxe cookies" price:399],
             [[PriceListItem alloc] initWithName:@"Yummy cheesecake" price:1299],

@@ -4,7 +4,7 @@
 @implementation PriceListItem : CPObject
 {
     CPString name @accessors;
-    int price @accessors;
+    int price @accessors; // Price is stored as an integer (i.e. price in pennies)
 }
 
 - (id)initWithName:(CPString)aName price:(int)aPrice
@@ -23,34 +23,3 @@
 }
 
 @end
-
-/*
-var PriceItemNameKey = @"PriceItemName",
-    PriceItemPriceKey = @"PriceItemPrice";
-
-@implementation PriceListItem (CPCoding)
-
-- (id)initWithCoder:(CPCoder)aCoder
-{
-    console.log([CPString stringWithFormat:@"decoding PriceListItem..."]);
-    self = [super initWithCoder:aCoder];
-    if (self) {
-        // unarchive data objects and outlets
-        [self setName:[aCoder decodeObjectForKey:PriceItemNameKey]];
-        [self setPrice:[aCoder decodeObjectForKey:PriceItemPriceKey]];
-    }
-    return self;
-}
-
-- (void)encodeWithCoder:(CPCoder)aCoder
-{
-    console.log([CPString stringWithFormat:@"encoding PriceListItem..."]);
-    [super encodeWithCoder:aCoder];
-
-    // Archive data objects and outlets
-    [aCoder encodeObject:[self name] forKey:PriceItemNameKey];
-    [aCoder encodeObject:[self price] forKey:PriceItemPriceKey];
-}
-
-@end
-*/

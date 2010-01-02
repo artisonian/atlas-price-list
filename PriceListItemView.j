@@ -22,14 +22,11 @@
     [priceLabel setAlignment:CPCenterTextAlignment];
 
     [nameLabel setStringValue:[priceItem name]];
-    [priceLabel setStringValue:[priceItem price] / 100.0];
+    [priceLabel setStringValue:[priceItem price] / 100.0]; // to display in dollars
 
     var bgImage = [[CPImage alloc]
             initWithContentsOfFile:[[CPBundle mainBundle] pathForResource:@"row_bg.png"]];
     [self setBackgroundColor:[CPColor colorWithPatternImage:bgImage]];
-
-    //[self setNeedsLayout];
-    //[self setNeedsDisplay:YES];
 }
 
 @end
