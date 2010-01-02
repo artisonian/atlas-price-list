@@ -49,4 +49,15 @@
     //console.log([CPString stringWithFormat:@"price list content: %@", [priceList content]]);
 }
 
+- (@action)addToPriceList:(id)sender
+{
+    //console.log("addToPriceList:");
+    var content = [priceList content];
+    var newPriceItem = [[PriceListItem alloc]
+            initWithName:@"Generic dessert"
+            price:Math.ceil(Math.random() * 1999)]; // Price between 1 and 2000 pennies
+    [priceList setContent:[content arrayByAddingObject:newPriceItem]];
+    // [priceList reload];
+}
+
 @end
