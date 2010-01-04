@@ -14,6 +14,7 @@
 {
     @outlet CPWindow    theWindow; //this "outlet" is connected automatically by the Cib
     @outlet CPCollectionView priceList;
+	CPURLConnection cometTestConnection;
 }
 
 - (void)applicationDidFinishLaunching:(CPNotification)aNotification
@@ -36,6 +37,8 @@
     [priceList setMaxNumberOfColumns:1];
     [priceList setVerticalMargin:0.0];
     [self loadTestData];
+
+	cometTestConnection = [CPURLConnection connectionWithRequest:[CPURLRequest requestWithURL:[CPURL URLWithString:@"/test"]] delegate:self];
 }
 
 - (void)loadTestData
@@ -58,6 +61,39 @@
             price:Math.ceil(Math.random() * 1999)]; // Price between 1 and 2000 pennies
     [priceList setContent:[content arrayByAddingObject:newPriceItem]];
     // [priceList reload];
+}
+
+// CPURLRequest Delegate Methods
+- (void)connection:(CPURLConnection)connection didReceiveData:(CPString)data
+{
+	CPLog(data);
+	var jsObject = [data objectFromJSON];
+	CPLog(jsObject);
+	if (jsObject.message) {
+		CPLog(jsObject.message);
+	} else if (jsObject.results) {
+		var newItems = [CPArray array];
+		for (var i = 0, j = jsObject.results.length; i < j; i++) {
+			CPLog(jsObject.results[i]);
+			var newPriceItem = [[PriceListItem alloc]
+		            initWithName:jsObject.results[i].name
+		            price:jsObject.results[i].price];
+			[newItems addObject:newPriceItem];
+		}
+		if ([newItems count] > 0) {
+			[priceList setContent:[[priceList content] arrayByAddingObjectsFromArray:newItems]];
+		}
+	}
+}
+
+- (void)connection:(CPURLConnection)connection didFailWithError:(id)error
+{
+	CPLog('Connection failed');
+}
+
+- (void)connectionDidFinishLoading:(CPURLConnection)connection
+{
+	cometTestConnection = [CPURLConnection connectionWithRequest:[CPURLRequest requestWithURL:[CPURL URLWithString:@"/test"]] delegate:self];
 }
 
 @end
